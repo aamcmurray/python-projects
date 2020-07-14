@@ -1,0 +1,17 @@
+#  Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+
+import numpy as np
+
+def difference_finder(n):
+	val=np.arange(1,n+1)
+	sum_of_squares=sum(val**2)
+	square_of_sum=sum(val)**2
+	difference=square_of_sum-sum_of_squares
+	return difference
+
+def main():
+	ceiling=100
+	print(difference_finder(ceiling))
+
+if __name__ == "__main__":
+	main()
