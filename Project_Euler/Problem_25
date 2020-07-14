@@ -1,0 +1,24 @@
+#  By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+
+import numpy as np
+
+def fibonachi(c,fiblist):
+	i=4
+	while fiblist[i-1]<c:
+		fiblist.append(fiblist[i-1]+fiblist[i-2])
+		i+=1
+	return fiblist
+
+def finaltermschecker(c,fiblist):
+	for i in range(2000,len(fiblist)):
+		if fiblist[i]>=c:
+			print(i+2) # since my sequence starts at 1,2,3,5 instead of 0,1,1
+
+def main():
+	ceiling=10**999
+	fib=[1,2,3,5]
+	fib=fibonachi(ceiling,fib)
+	finaltermschecker(ceiling,fib)
+
+if __name__ == "__main__":
+	main()
