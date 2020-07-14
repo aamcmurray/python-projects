@@ -1,0 +1,43 @@
+# What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+import numpy as np
+from collections import Counter
+
+def flipper(C):
+	prime=2*[False]+2*[True]+int(((C-2)/2))*[False, True]
+	yield 2
+	i = 3
+	while (i^2) <= C:
+		if prime[i] == False:
+			i += 1
+			continue
+		elif prime[i] == True:
+			yield i
+			j = 2*i
+			while j < C:
+				prime[j] = False
+				j += i
+			i += 2
+	return
+
+def prime_factor_find(n):
+	if n==1:
+		return []	
+	for i in M:
+		if n%i == 0:
+			return [i] + prime_factor_find(n/i)
+
+
+M=list(flipper(20))
+
+primes_need=Counter()
+
+for i in range(2,21):
+	primes=Counter(prime_factor_find(i))
+	primes_need= primes_need | primes
+
+tot = 1
+for prime, amount in primes_needed.items():
+	tot *= prime ** amount
+
+print(total)
