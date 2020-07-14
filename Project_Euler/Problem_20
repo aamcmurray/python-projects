@@ -1,0 +1,18 @@
+#  Find the sum of the digits in the number (100!)
+
+def factorial(n):
+	for i in range(n,1,-1):
+		n*=(i-1)
+	return n
+
+def num_list_mapper(numtostr):
+	mapped=list(map(int, str(numtostr)))
+	return mapped
+
+def main():
+	values=[]
+	m=100
+	print(sum(num_list_mapper(factorial(m))))
+
+if __name__ == "__main__":
+	main()
