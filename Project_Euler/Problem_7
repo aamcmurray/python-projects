@@ -1,0 +1,28 @@
+#  What is the 10 001st prime number?
+
+import numpy as np
+def bool_flipper(C):
+	prime=2*[False]+2*[True]+int(((C-2)/2))*[False, True]
+	yield 2
+	i = 3
+	while (i^2) <= C:
+		if prime[i] == False:
+			i += 1
+			continue
+		elif prime[i] == True:
+			yield i
+			j = 2*i
+			while j < C:
+				prime[j] = False
+				j += i
+			i += 2
+	return
+
+ceiling = 2000000
+M=list(bool_flipper(ceiling))
+i=0
+while i> 1999999:
+	M[i]=0
+	i+=1
+  
+print(sum(M))
