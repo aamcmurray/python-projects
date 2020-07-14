@@ -1,0 +1,31 @@
+#  Find the largest palindrome made from the product of two 3-digit numbers.
+
+import numpy as np 
+
+def num_list_mapper(numtostr):
+	mapped=list(map(int, str(numtostr)))
+	return mapped
+
+def list_num_mapper(listtostr):
+	mapped_back=map(str,listtostr)
+	mapped_back="".join(mapped_back)
+	mapped_back=int(mapped_back)
+	return mapped_back
+
+def finder(dumpsterbin):
+	for i in range(100,999):
+		for j in range(100,999):
+			k=i*j
+			if k>100000:
+				palindrome=num_list_mapper(k)
+				if (palindrome[0]==palindrome[5]) and (palindrome[1]==palindrome[4]) and (palindrome[2]==palindrome[3]):
+					dumpsterbin.append(list_num_mapper(palindrome))
+	return dumpsterbin
+
+def main():
+	dustbin=[]
+	finder(dustbin)
+	print(np.max(dustbin))
+
+if __name__ == "__main__":
+    main()
