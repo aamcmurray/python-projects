@@ -1,0 +1,35 @@
+# What is the largest prime factor of the number 600851475143 ?
+
+import numpy as np
+
+def flipper(C):
+	prime=2*[False]+2*[True]+int(((C-2)/2))*[False, True]
+	yield 2
+	i = 3
+	while (i^2) <= C:
+		if prime[i] == False:
+			i += 1
+			continue
+		elif prime[i] == True:
+			yield i
+			j = 2*i
+			while j < C:
+				prime[j] = False
+				j += i
+			i += 2
+	return
+
+def largestfinder(a,listp):
+	for i in range((len(listp)-1),0,-1):
+		if a%listp[i]==0:
+			print(listp[i])
+			break
+
+def main():
+	number=600851475143
+	ceiling = int(np.sqrt(number))
+	primelist=list(flipper(ceiling))
+	largestfinder(number,primelist)
+
+if __name__ == "__main__":
+    main()
