@@ -1,30 +1,8 @@
-#  =================================================================================
-#  ___________________________________________________________Mandelbrot Set Plotter
-#  ___________________________________________________________ver. 2________________
-#  ___________________________________________________________07/07/2020____________
-#  =================================================================================
-#  =================================================================================
-#  Description
-#  =================================================================================
-#  Repeatedly iterates checking if the absolute value of the function is greater than two up to a certain number of iterations.
-#
-#  =================================================================================
-#  Version History
-#  =================================================================================
-#
-#  v.1. (060720) - Used matplotlib. Slow and poor resolution. 
-#  v.2. (070720) - Updated to use PIL
-#
-#  =================================================================================
-#  The Code
-#  =================================================================================
-#  __________________________________________________________________________Imports
+# Repeatedly iterates checking if the absolute value of the function is greater than two up to a certain number of iterations. Produces an image of the Mandelbrot set.
 
 import math
 import numpy as np
 from PIL import Image, ImageDraw
-
-#  __________________________________________________________________________Functions
 
 def mandelbrot(cplx,it,jul):
 	z = jul
@@ -53,16 +31,12 @@ def draw_machine(val_set,stp_size,it):
 			draw.point([i,j], (color, color, color)) 
 	mandel_picture.save('Mandelbrot.png', 'PNG')
 
-#  __________________________________________________________________________Globals
-
 iterations = 100
 step_size = 1000
 a = np.linspace(-2,1,step_size)
 b = np.linspace(-1,1,step_size)
 valuesin = {}
 values = {} 
-
-#  __________________________________________________________________________Code
 
 values = gridbuild(a,b,valuesin,step_size)
 draw_machine(values,step_size,iterations)
