@@ -19,11 +19,14 @@ def bool_flipper(C):
 			i += 2
 	return
 
-ceiling = 2000000
-M=list(bool_flipper(ceiling))
-i=0
-while i> 1999999:
-	M[i]=0
-	i+=1
+def main():
+	ceiling = 2000000
+	M=list(bool_flipper(ceiling))
+	i=0
+	while i> 1999999:
+		M[i]=0
+		i+=1
+	print(sum(M))
 
-print(sum(M))
+if __name__ == "__main__":
+	main()
