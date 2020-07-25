@@ -27,17 +27,16 @@ def prime_factor_find(n):
 		if n%i == 0:
 			return [i] + prime_factor_find(n/i)
 
+def main():
+	M=list(flipper(20))
+	primes_need=Counter()
+	for i in range(2,21):
+		primes=Counter(prime_factor_find(i))
+		primes_need= primes_need | primes
+	tot = 1
+	for prime, amount in primes_needed.items():
+		tot *= prime ** amount
+	print(total)
 
-M=list(flipper(20))
-
-primes_need=Counter()
-
-for i in range(2,21):
-	primes=Counter(prime_factor_find(i))
-	primes_need= primes_need | primes
-
-tot = 1
-for prime, amount in primes_needed.items():
-	tot *= prime ** amount
-
-print(total)
+if __name__ == "__main__":
+	main()
