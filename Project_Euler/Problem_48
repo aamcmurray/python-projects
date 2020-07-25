@@ -1,11 +1,19 @@
 #  Find the last ten digits of the series 1^1+2^2+3^3+...+1000^1000
-number=0
-for i in range(1,1001):
-	number+=(i**i)
-	if i==1000:
-		number=list(map(int, str(number)))
-		for k in range(len(number)-1,len(number)-11,-1):
-			print(number[k])
+
+def finder(number):
+	for i in range(1,1001):
+		number+=(i**i)
+		if i==1000:
+			number=list(map(int, str(number)))
+			for k in range(len(number)-1,len(number)-11,-1):
+				print(number[k])
+
+def main():
+	n=0
+	finder(n)
+
+if __name__ == "__main__":
+	main()
 
 # alternatively: 
 # number,last = 0, 10000000000
