@@ -1,11 +1,4 @@
-#  =================================================================================
-#  ___________________________________________________________Julia Set Movie Maker
-#  ___________________________________________________________ver. 1________________
-#  ___________________________________________________________07/07/2020____________
-#  =================================================================================
-#  Description
-#  =================================================================================
-#  Repeatedly iterates checking if the absolute value of the function is greater than two up to a certain number of iterations. Places to see:
+#  Repeatedly iterates checking if the absolute value of the function is greater than two up to a certain number of iterations. Produces a gif of Julia sets. Places to see:
 #
 #  complex(-0.7589,0.0753)
 #  complex(-0.79,0.15)
@@ -16,22 +9,10 @@
 #  complex(0.285, 0.01)
 #  complex(-0.8, 0.156)
 #  complex(-0.4, 0.6)
-#
-#  =================================================================================
-#  Version History
-#  =================================================================================
-#
-#  v.1. (080720) - Built off a mandelbot set plotter.
-#  =================================================================================
-#  The Code
-#  =================================================================================
-#  __________________________________________________________________________Imports
 
 import math
 import numpy as np
 from PIL import Image, ImageDraw
-
-#  __________________________________________________________________________Functions
 
 def juliamake(c,it,juliaterm):
 	c = c
@@ -67,8 +48,6 @@ def draw_machine(val_set,stp_size,it,counter):
 	counter+=1 #  Incriments the counter. 
 	return counter
 
-#  __________________________________________________________________________ Globals
-
 iterations = 100
 step_size = 1000 
 a = np.linspace(-2, 2, step_size) #  Re axis.
@@ -77,8 +56,6 @@ valuesin = {}
 values = {} 
 count=1
 images=[]
-
-#  __________________________________________________________________________ Main 
 
 for i in range(1, 100):
 	juliaterm=complex(0.3, -2 * (i / 100))
