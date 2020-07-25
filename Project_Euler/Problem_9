@@ -4,12 +4,18 @@ import numpy as np
 def check_pathagorean(a, b, c):
 	return (a**2) + (b**2) == (c**2)
 
-summation = 1000
+def finder(n):
+	for i in range(1, n):
+		for j in range(i+1, n):
+			c = summation - (i + j)
+			if(check_pathagorean(i, j, c)):
+				if i + j + c == summation:
+					print(i*j*c)
+					break
+					
+def main():
+	summation=1000
+	finder(n)
 
-for i in range(1, summation):
-	for j in range(i+1, summation):
-		c = summation - (i + j)
-		if(check_pathagorean(i, j, c)):
-			if i + j + c == summation:
-				print(i*j*c)
-				break
+if __name__ == "__main__":
+	main()
