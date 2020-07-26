@@ -14,10 +14,6 @@ Reads in clonogenic assay data from a .csv file using pandas library. Uses numpy
 
 Uses a recursive procedure to draw a Julia set, given a range, for instance x+iy with y from -2 to 2, it will generate multiple images and collect them in a .gif format. 
 
-# KNN.py
-
-A K nearest neighbours routine from python for data science. 
-
 # MandelbrotSetImager.py
 
 Uses a recursive procedure to generate images of the mandelbrot set. 
