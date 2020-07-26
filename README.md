@@ -1,24 +1,23 @@
 # python-projects
-
-1. CataniaDataOxic.csv
-
-Contains some mock data for ClonogenicsSurvivalCurveFitting.py 
-
-2. ClonogenicsSurvivalCurveFitting.py
+1. ClonogenicsSurvivalCurveFitting.py
 
 Reads in clonogenic assay data from a .csv file using pandas library. Uses numpy to replace blank entries with NaN values. Takes average count of a 6 well plate, standard deviation and SEM accounting for missing or NaN entries. Averages over any replicates by finding entries with the same dose using fancy indexing. Calculates the plating efficiency of the control and the survival fractions and normalised survival fractions. Plots the normalised survival fractions against dose /Gy in a scatter plot. Fits the data using a non-linear regression using the SciPy library. Returns alpha and beta values with standard deviation calculated by the covariance diagonal. 
 
-3. JuliaSetGifMaker.py
+2. JuliaSetGifMaker.py
 
 Uses a recursive procedure to draw a Julia set, given a range, for instance x+iy with y from -2 to 2, it will generate multiple images and collect them in a .gif format. 
 
-4. KNN.py
+3. KNN.py
 
 A K nearest neighbours routine from python for data science. 
 
-5. MandelbrotSetImager.py
+4. MandelbrotSetImager.py
 
 Uses a recursive procedure to generate images of the mandelbrot set. 
+
+5. CataniaDataOxic.csv
+
+Contains some mock data for ClonogenicsSurvivalCurveFitting.py 
 
 6. PrimeNumberFinder.py
 
