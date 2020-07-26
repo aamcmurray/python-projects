@@ -6,6 +6,10 @@ A folder with my solutions to various project euler (https://projecteuler.net/ar
 
 Simple Monte Carlo to approximate pi.
 
+# BayesianInference_Beta_Binomial
+
+Attempt at simple bayesian model using a uniform distribution prior and a binomial likelihood distribution to evaluate a posterior. Estimates proportion of google earth entries which feature the united kingdom and ireland given some initial observations. uniform selected to assume zero prior knoweldge of what proportion might be. binomial selected as it's a discrete probability distribution for number of successes given N binary success/failure trails. Used jupyter notebook. 
+
 # ClonogenicsSurvivalCurveFitting.py
 
 Reads in clonogenic assay data from a .csv file using pandas library. Uses numpy to replace blank entries with NaN values. Takes average count of a 6 well plate, standard deviation and SEM accounting for missing or NaN entries. Averages over any replicates by finding entries with the same dose using fancy indexing. Calculates the plating efficiency of the control and the survival fractions and normalised survival fractions. Plots the normalised survival fractions against dose /Gy in a scatter plot. Fits the data using a non-linear regression using the SciPy library. Returns alpha and beta values with standard deviation calculated by the covariance diagonal. 
