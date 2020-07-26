@@ -28,7 +28,7 @@ def SFmodel(dose,alpha,beta,):
 #  The above function describes the linear quadratic model of cell survival. Used in curve fitting. 
 
 def main(): 
-	data = pd.read_csv("C:/Users/User/LocationOfCsvFiles/CataniaDataOxic.csv")
+	data = pd.read_csv("C:/Users/User/LocationOfCsvFiles/MockClonogenicData.csv")
 	data = data.replace('',np.nan)
 
 	seed_num=np.array(data["SEEDED"]) 
