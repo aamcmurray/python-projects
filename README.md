@@ -14,9 +14,9 @@ Attempt at simple bayesian model using a uniform distribution prior and a binomi
 
 Reads in clonogenic assay data from a .csv file using pandas library. Uses numpy to replace blank entries with NaN values. Takes average count of a 6 well plate, standard deviation and SEM accounting for missing or NaN entries. Averages over any replicates by finding entries with the same dose using fancy indexing. Calculates the plating efficiency of the control and the survival fractions and normalised survival fractions. Plots the normalised survival fractions against dose /Gy in a scatter plot. Fits the data using a non-linear regression using the SciPy library. Returns alpha and beta values with standard deviation calculated by the covariance diagonal. 
 
-# Fitting
+# Fittingv2
 
-Fitting some fake data using standard SciPy nonlinear regression and an attempt at a bayesian approach. Needs work.
+Fitting some fake data using standard SciPy nonlinear regression and an attempt at a bayesian approach. 
 
 # JuliaSetGifMaker.py
 
