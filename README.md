@@ -12,7 +12,7 @@ Attempt at simple bayesian model using a uniform distribution prior and a binomi
 
 # BayesianSurvivalFitting
 
-Fitting some fake data using standard SciPy nonlinear regression and an attempt at a bayesian approach. 
+Fitting some fake data using standard SciPy nonlinear regression and an attempt at a bayesian approach. Needs work.
 
 # ClonogenicsSurvivalCurveFitting.py
 
