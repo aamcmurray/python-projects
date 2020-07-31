@@ -22,6 +22,10 @@ Fitting some fake data using standard SciPy nonlinear regression and an attempt 
 
 Uses a recursive procedure to draw a Julia set, given a range, for instance x+iy with y from -2 to 2, it will generate multiple images and collect them in a .gif format. 
 
+# LeastSqaures
+
+Comparing least squares to a Bayesian linear regression. Bayesian inference gives a best bit but also a whole posterior distribution of likely parameters. 
+
 # MandelbrotSetImager.py
 
 Uses a recursive procedure to generate images of the mandelbrot set. 
