@@ -1,10 +1,21 @@
+# AppliedMaths 
+A folder containing some methods for dealing with various maths problems. 
+  - ODESolve: A solver for ordinary differential equations using sklearn and scipy.
+  - QuadraticSolver: A solver for quadratic equations including matplotlib visualisation.
+  
+# NumberTheory 
+A folder containing code relating to number theory. 
+  - JuliaSetGifMaker: Uses a recursive procedure to draw a Julia set, given a range, for instance x+iy with y from -2 to 2, it will generate multiple images and collect them in a .gif format. Uses PIL.
+  - MandelbrotSetImager: Uses a recursive procedure to generate images of the mandelbrot set. Uses PIL.
+  - PrimeNumberFinder: A relatively efficient prime number finder, uses an erastasthones sieve, skips the even numbers and only calculates to sqrt(N). 
+
 # Project Euler Folder.
-
-A folder with my solutions to various project euler (https://projecteuler.net/archives) problems. 
-
-# ApproximatePi.py
-
-Simple Monte Carlo to approximate pi.
+A folder with solutions to various project euler (https://projecteuler.net/archives) problems. 
+  
+# SimpleMonteCarlo.
+A folder containing simple monte carlo solutions. 
+  - ApproximatePi: Approximates pi.
+  - Integration: Finds area under a curve via SMC.
 
 # BayesianInference_Beta_Binomial
 
@@ -18,40 +29,16 @@ Reads in clonogenic assay data from a .csv file using pandas library. Uses numpy
 
 Fitting some fake data using standard SciPy nonlinear regression and an attempt at a bayesian approach. 
 
-# JuliaSetGifMaker.py
-
-Uses a recursive procedure to draw a Julia set, given a range, for instance x+iy with y from -2 to 2, it will generate multiple images and collect them in a .gif format. 
-
 # LeastSqaures
 
 Comparing least squares to a Bayesian linear regression. Bayesian inference gives a best bit but also a whole posterior distribution of likely parameters. 
 
-# MandelbrotSetImager.py
-
-Uses a recursive procedure to generate images of the mandelbrot set. 
-
 # MockClonogenicData.csv
 
 Contains some mock data for ClonogenicsSurvivalCurveFitting.py 
-
-# ODESolve.py
-
-Solve ordinary differential equations and integrate using scipy.
-
-# PrimeNumberFinder.py
-
-A relatively efficient prime number finder, uses an erastasthones sieve, skips the even numbers and only calculates to sqrt(N). 
-
-# QuadraticSolver.py
-
-A simple quadratic solver, no validation layers for user input. 
 
 # README.md
 
 # SafeDiveTest.py
 
 Determines if a planned dive exceeds the British Sub Aqua Club guidelines on Oxygen partial pressure levels. Complete with some validation layers. This is not endorsed by or affiliated with BSAC. It's a code written for personal use based on their safety guidelines.
-
-# SimpleMCIntegration.py
-
-Simple monte carlo to integrate between limits.
