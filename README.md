@@ -4,7 +4,8 @@ A folder containing some methods for dealing with various maths problems.
   - QuadraticSolver: A solver for quadratic equations including matplotlib visualisation.
   
 # Bayesian Analysis
-A folder containing methods for Bayesian analysis, mostly fitting. 
+A folder containing methods for Bayesian analysis, mostly fitting.
+  - Bayesian Introduction: Reproduced following a tutorial by Simon Ouellette. Useful reference.
   - Fitting comparison: compares non linear regression via scipy to bayesian fit. 
   - LeastSquaresComparison: compares linear least squares method to bayesian fit. 
   
