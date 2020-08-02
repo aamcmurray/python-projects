@@ -1,5 +1,6 @@
 # AppliedMaths 
 A folder containing some methods for dealing with various maths problems. 
+  - Derivatives: Using finite differences methods with numpy and matplot lib to find approximate solutions to differentiation problems.
   - ODESolve: A solver for ordinary differential equations using sklearn and scipy.
   - QuadraticSolver: A solver for quadratic equations including matplotlib visualisation.
   
