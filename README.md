@@ -16,6 +16,7 @@ A folder containing practice using different data structures.
   - IntToBinaryStack: Converts integers to binary using a stack. 
   - NumberTheory Stack: Using an altered stack with a method for decomposing its contents to a set to find the sum of numbers divisible by 3 and 5. 
   - Parentheses Stack: Using a stack to determine if parentheses are balanced or not. 
+  - Reverse Stack: Using a stack to reverse list.
   
 # NumberTheory 
 A folder containing code relating to number theory. 
