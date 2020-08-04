@@ -9,7 +9,12 @@ A folder containing methods for Bayesian analysis, mostly fitting.
   - Bayesian Introduction: Reproduced following a tutorial by Simon Ouellette. Useful reference.
   - An attempt at a non linear regression using some fake data generated using the damped harmonic motion equation and solving for the coefficients. 
   - Fitting comparison: Attempt at comparing non linear regression via scipy to bayesian fit. 
-  - LeastSquaresComparison: Attempt at comparing linear least squares method to bayesian fit. 
+  - LeastSquaresComparison: Attempt at comparing linear least squares method to bayesian fit.
+
+# Data Structures
+A folder containing practice using different data structures.
+  - NumberTheory Stack: Using an altered stack with a method for decomposing its contents to a set to find the sum of numbers divisible by 3 and 5. 
+  - Parentheses Stack: Using a stack to determine if parentheses are balanced or not. 
   
 # NumberTheory 
 A folder containing code relating to number theory. 
