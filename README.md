@@ -10,6 +10,10 @@ A folder containing methods for Bayesian analysis, mostly fitting.
   - An attempt at a non linear regression using some fake data generated using the damped harmonic motion equation and solving for the coefficients. 
   - Fitting comparison: Attempt at comparing non linear regression via scipy to bayesian fit. 
   - LeastSquaresComparison: Attempt at comparing linear least squares method to bayesian fit.
+  
+# Computational Physics
+A folder containing computational physics problems.
+  - Convergence: Short illustration that convergence doesn't mean the answer produced is correct.
 
 # Data Structures
 A folder containing practice using different data structures.
