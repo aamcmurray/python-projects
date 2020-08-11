@@ -1,0 +1,35 @@
+import random
+import matplotlib.pyplot as plt
+
+def decay(N, lamda,t):
+	while N != 1:
+		delta_N=0
+		for i in range(1,N):
+			if (random.random()<lamda):
+				delta_N = delta_N +1
+		t+=1
+		N= N-delta_N 
+		yield t, delta_N, N
+	return
+
+def plotting(collected_data):
+	t_out=[]
+	n_out=[]
+	for i in range(0,len(collected_data)):
+		t_out.append(collected_data[i][0])
+		n_out.append(collected_data[i][2])
+
+	plt.plot(t_out,n_out,'+', c='red')
+	plt.xlabel('Time /s')
+	plt.ylabel('Nuclei Number')
+	plt.show()
+
+def main():
+	lambda1=0.3
+	time_init=0
+	Num_init=120
+	data=list(decay(Num_init,lambda1,time_init))
+	plotting(data)
+
+if __name__ == '__main__':
+	main()
