@@ -3,11 +3,11 @@ def tester(n,m):
 	return lambda a: (a%n, a%m)
 
 def main(x,y,z):
-	#  Setting up the lambda function to test denominators 3 and 5.
+	#  Setting up the lambda function to test denominators x and y.
 	mod_value=tester(x,y)
 	#  Some strings to concatenate
 	divisibile_three, divisible_five, divisible_none='Fizz', 'Buzz', 'N/A'
-	#  A for loop to evaluate the output of the tester for numerator inputs of 1-20.
+	#  A for loop to evaluate the output of the tester for numerator inputs of 1-z.
 	for i in range(1,z):
 		if (sum(mod_value(i))==0):
 			print(i, divisibile_three + divisible_five)
