@@ -1,6 +1,8 @@
+#import necessary libraries
 import matplotlib.pyplot as plt
 import numpy as np
 
+#exception handling
 class Error(Exception):
 	"""Base class for other exceptions"""
 	pass
@@ -14,6 +16,7 @@ class ValueNotAcceptedError(Error):
 	"""Raised when input value not in range"""
 	pass
 
+#user input functions 
 def userinput():
 	while True:
 		try:
@@ -49,6 +52,7 @@ def bookinputtwo():
 			print("Enter details: ")
 	return book_details
 
+#for reading data in from a text file
 def reader(path):
 	b=[]
 	f = open(path, 'r', encoding='utf-8-sig') # opens the text file. specifying the encoding ensures no strange characters appear.
@@ -60,6 +64,7 @@ def reader(path):
 		b.append(book_details)
 	return b, conts
 
+# a main display providing options to the user
 def options_display(c):
 	print(' Select listing to be displayed, in alpha-numeric order, by entering a real number between 0 and ', len(c)-1, '. \n','Alternatively press ', len(c), 'to display the details of all titles. \n', 'Finally, press 9 for stock analysis')
 	counter=0
@@ -73,6 +78,7 @@ def options_display(c):
 	print(11, 'ADD NEW ENTRY')
 	print(12, 'AVAILABILITY')
 
+# a function that determines what happens given different user inputs on the main menu
 def choices(inp_v,b,c):
 	if inp_v<7:
 		# i'm initialising a set and a list, when you use .add on a list it will add an entry, provided its not already in the set, this is useful for things like titles and authors but not good for cost and stock
@@ -112,7 +118,7 @@ def choices(inp_v,b,c):
 		print('Difference in averages: ', round((int(new)-int(previous)),2))
 	elif inp_v==12:
 		availability(b,c)
-
+#performs analysis of the stock, calculating the total stock value and the average price of available books
 def stockanalysis(b,c):
 	print(' Title - Stock - Value (£) ')#
 	value=0
@@ -123,7 +129,8 @@ def stockanalysis(b,c):
 	print(' Total stock value: £',value)
 	av=averagecost(b,c)
 	print(' Average price of books in stock: £', av)
-
+	
+# calculates the average cost of available books
 def averagecost(b,c):
 	prices=[]
 	for i in range(0, len(b)):
@@ -141,6 +148,7 @@ def averagecost(b,c):
 	average=round(sum(prices)/len(prices),2)
 	return average
 
+# returns the available unique genres
 def genretotals(b,c):
 	unique_genres=set()
 	for i in range(0, len(b)):
@@ -151,7 +159,7 @@ def genretotals(b,c):
 			unique_genres.add(genres)
 	print(" There are :", len(unique_genres), " unique genres in stock.")
 	genreadd(b,c,unique_genres)
-
+# plots genre against total books of that genre
 def genreadd(b,c,ug):
 	genre_sum=0
 	genre_list=[]
@@ -168,14 +176,10 @@ def genreadd(b,c,ug):
 		x.append(str(check_genre))
 		y.append(genre_sum)
 		print(" There are ", counter, "unique books of ", check_genre)
-	#fig,ax=plt.subplots()
-	#plt.bar(x,y)
-	#plt.xticks(x,(y))
-	#plt.show
 	plt.bar(x,y)
 	plt.show()
 
-
+# function allowing a user to add a new book entry
 def addnewbook(b,c):
 	textin_list=[]
 	for i in range(0,7):
@@ -201,6 +205,7 @@ def addnewbook(b,c):
 	print('stock now: ', total_stocked)
 	return b
 
+#function allowing user to check availability of a book
 def availability(b,c):
 	print('Check if a title is listed in the database by typing the title below.')
 	named_book=str(' ')+str(bookinput())
@@ -218,9 +223,9 @@ def availability(b,c):
 	else:
 		print(named_book, 'is not listed')
 		print('stock level:', 0)
-
+# the main loop that calls everything
 def main():
-	path='C:/Users/Aaron/OneDrive/Documents/Coding/bookstocks.txt'
+	path='C:/Users/User/Place/bookstocks.txt'
 	bank, contents=reader(path)
 	while True: 
 		options_display(contents)
