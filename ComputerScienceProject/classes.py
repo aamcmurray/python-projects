@@ -4,30 +4,35 @@ class Error(Exception):
 	'''Base class for other exceptions'''
 	pass
 class TooLong(Error):
-	"""Raised when input value not M or F"""
+	"""Raised when input value length exceeds limit"""
 	pass
 class TooShort(Error):
-	"""Raised when input value not M or F"""
+	"""Raised when input value length less than or equal to 1"""
 	pass
 class InvalidEntry(Error):
-	"""Raised when input value not M or F"""
+	"""Raised when input doesn't match dd/mm/yyyy format"""
 	pass
 class ValueNotGender(Error):
 	"""Raised when input value not M or F"""
 	pass
 class StrError(Error):
-	"""Raised when input value not M or F"""
+	"""Raised when input is not a string"""
 	pass
 
 class database:
+	course='Science'
+	lecturer='Nill Bye the Science Guy'
 	def __init__(self): # initialises a list to store students in
 		self.allstudents = [] 
 	def add_student(self, student): # a function for appending the list of students
 		self.allstudents.append(student)
+	def remove_student(self,index):
+		self.allstudents.pop(index)
 	def sizeof(self): # a function for returning the size of the list
 		return len(self.allstudents)
 	def get(self): # function for returning the list of students 
 		return self.allstudents
+
 
 class Student:
 	''' A student class with two properties all students will have nomatter their other properties'''
@@ -144,7 +149,7 @@ def createstudent():
 	studentcreation=Student(a,b,c,d,e) # create a student object with these values 
 	return studentcreation
 
-def accessstudentdata(studentdatabase): # function for searching for students and outputting their info
+def accessstudentdata(studentdatabase):
 	'''Function for searching for students records'''
 	while True:
 		try:
@@ -166,25 +171,29 @@ def accessstudentdata(studentdatabase): # function for searching for students an
 	searched_student=[]
 	student_name_details=[]
 	for i in range(0, studentdatabase.sizeof()):
-		student_name_details.append(studentdatabase.get()[0].lastname)
+		student_name_details.append(studentdatabase.get()[i].lastname)
 	if search_secondname in student_name_details:
 		index=student_name_details.index(search_secondname)
 		studentdatabase.get()[index].returndetails()
+		return index
 	elif search_secondname not in student_name_details:
 		print('\n Student not found.')
 
-def percentages(studentdatabase): # calculating percentage breakdown
+def percentages(studentdatabase):
 	genderlist=[]
-	for i in range(0,studentdatabase.sizeof()):
-		genderlist.append(studentdatabase.get()[i].gender)
-	male=genderlist.count('M')
-	female=genderlist.count('F')
-	other=genderlist.count('X')
-	total=male+female+other 
-	male_perc=round(100*male/total)
-	female_perc=round(100*female/total)
-	other_perc=round(100*other/total)
-	return male_perc,female_perc,other_perc
+	if studentdatabase.sizeof()>0:
+		for i in range(0,studentdatabase.sizeof()):
+			genderlist.append(studentdatabase.get()[i].gender)
+		male=genderlist.count('M')
+		female=genderlist.count('F')
+		other=genderlist.count('X')
+		total=male+female+other 
+		male_perc=round(100*male/total)
+		female_perc=round(100*female/total)
+		other_perc=round(100*other/total)
+		return male_perc,female_perc,other_perc
+	else:
+		return 0, 0, 0
 
 def optionsmenu(student_database):
 	'''A user input menu screen'''
@@ -192,7 +201,9 @@ def optionsmenu(student_database):
 	print(' 1. Print student records.')
 	print(' 2. Add new student.')
 	print(' 3. Search student records by last name.')
-	print(' 4. Percentages. \n' )
+	print(' 4. Percentages.' )
+	print(' 5. Produce Report')
+	print(' 6. Remove student')
 	while True:
 		try:
 			user_selection=int(input("\n Choose a menu option by selecting a number: "))
@@ -213,6 +224,27 @@ def optionsmenu(student_database):
 	elif user_selection==4:
 		male,female,other = percentages(student_database)
 		print('Percent Male: ', male, 'Percent Female: ', female, 'Percent Other: ', other)
+	elif user_selection==5:
+		print('\n ------ REPORT ------ \n')
+		print('\n COURSE DETAILS \n')
+		print('Course Title: ', student_database.course)
+		print('Lecturer Name: ', student_database.lecturer)
+		print('\n STUDENTS ENROLLED \n')
+		if student_database.sizeof()>0: # if there's more than one entry ...
+			for i in range(0,student_database.sizeof()): # ... use the returndetails() function to print them
+				student_database.get()[i].returndetails()
+		else:
+			return print('\n No student data available.') # ... otherwise return this
+		print('\n GENDER SUMMARY \n')
+		male,female,other = percentages(student_database)
+		print('Percent Male: ', male,'\n', 'Percent Female: ', female,'\n', 'Percent Other: ', other,'\n')
+	elif user_selection==6:
+		index=accessstudentdata(student_database)
+		if index!=None:
+			student_database.remove_student(index)
+		else:
+			pass
+
 
 def main():
 	student_database=database()
