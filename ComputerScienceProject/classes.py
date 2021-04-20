@@ -1,3 +1,5 @@
+'''Comp Sci project to make a student database using classes capable of reading in data, saving data output, adding/removing students, producing reports on course and searching students. '''
+
 import datetime
 
 class Error(Exception):
@@ -33,7 +35,6 @@ class database:
 	def get(self): # function for returning the list of students 
 		return self.allstudents
 
-
 class Student:
 	''' A student class with two properties all students will have nomatter their other properties'''
 	course='Science'
@@ -56,6 +57,24 @@ class Student:
 		self.gender=newgender
 	def returndetails(self): # function for returning details 
 		print('First Name: ', self.name, ' Surname: ', self.lastname,' Address: ', self.address,' D.O.B.: ', self.dob,' Gender: ', self.gender)
+	def savedetails(self):
+		return [self.name, self.lastname,self.address, self.dob,self.gender]
+
+def reader(student_database):
+	'''Reads in text document with student details '''
+	path='C:/Users/Aaron/OneDrive/Documents/Coding/Javascript/Javascript programming tutorial/studentlist2.txt'
+	b=[]
+	f = open(path, 'r', encoding='utf-8-sig') # opens the text file. specifying the encoding ensures no strange characters appear.
+	next(f) # skips the first line since it's just details
+	conts=f.readline().rstrip().replace('#', '').replace(' ','').split(',') #reads the line, rstrip removes '\n's, replace substitutes '#'s for spaces, split separates the line anywhere a comma appears.
+	for line in f: # for loop going from the first unread line in the text file to the last
+		text=line.rstrip().split(',') # just splitting the line that's being read up and saving it as a variable
+		student_details={conts[i]:text[i] for i in range(0,len(conts))} 
+		keys = list(student_details.keys())
+		values = list(student_details.values())
+		(keys,values) = zip(*student_details.items())
+		newstudent=Student(values[0],values[1][1:],values[2][1:],values[3][1:],values[4][1:])
+		student_database.add_student(newstudent)
 
 def nameentry(nametype):
 	'''user input for the name with validation'''
@@ -143,9 +162,7 @@ def createstudent():
 	a = nameentry(nametype) # first name user input
 	nametype='last'
 	b=nameentry(nametype) # second name user input
-	c=addressentry() # address user input
-	d=dobentry() # dob user input
-	e=genderentry() # gender user input
+	c, d, e=addressentry(), dobentry(), genderentry()  # address,dob,gender  user input
 	studentcreation=Student(a,b,c,d,e) # create a student object with these values 
 	return studentcreation
 
@@ -184,13 +201,9 @@ def percentages(studentdatabase):
 	if studentdatabase.sizeof()>0:
 		for i in range(0,studentdatabase.sizeof()):
 			genderlist.append(studentdatabase.get()[i].gender)
-		male=genderlist.count('M')
-		female=genderlist.count('F')
-		other=genderlist.count('X')
+		male, female, other=genderlist.count('M'), genderlist.count('F'), genderlist.count('X')
 		total=male+female+other 
-		male_perc=round(100*male/total)
-		female_perc=round(100*female/total)
-		other_perc=round(100*other/total)
+		male_perc, female_perc, other_perc=round(100*male/total),round(100*female/total),round(100*other/total)
 		return male_perc,female_perc,other_perc
 	else:
 		return 0, 0, 0
@@ -202,8 +215,10 @@ def optionsmenu(student_database):
 	print(' 2. Add new student.')
 	print(' 3. Search student records by last name.')
 	print(' 4. Percentages.' )
-	print(' 5. Produce Report')
-	print(' 6. Remove student')
+	print(' 5. Produce Report.')
+	print(' 6. Remove student.')
+	print(' 7. Save Database.')
+	print(' 8. Quit.')
 	while True:
 		try:
 			user_selection=int(input("\n Choose a menu option by selecting a number: "))
@@ -225,11 +240,9 @@ def optionsmenu(student_database):
 		male,female,other = percentages(student_database)
 		print('Percent Male: ', male, 'Percent Female: ', female, 'Percent Other: ', other)
 	elif user_selection==5:
-		print('\n ------ REPORT ------ \n')
-		print('\n COURSE DETAILS \n')
-		print('Course Title: ', student_database.course)
-		print('Lecturer Name: ', student_database.lecturer)
-		print('\n STUDENTS ENROLLED \n')
+		print('\n', '------ REPORT ------',' \n', '\n', 'COURSE DETAILS', '\n')
+		print('Course Title: ', student_database.course, '\n','Lecturer Name: ', student_database.lecturer)
+		print('\n', 'STUDENTS ENROLLED', '\n')
 		if student_database.sizeof()>0: # if there's more than one entry ...
 			for i in range(0,student_database.sizeof()): # ... use the returndetails() function to print them
 				student_database.get()[i].returndetails()
@@ -244,10 +257,28 @@ def optionsmenu(student_database):
 			student_database.remove_student(index)
 		else:
 			pass
-
+	elif user_selection==7:
+		path='C:/Users/Aaron/OneDrive/Documents/Coding/Javascript/Javascript programming tutorial/studentlist2.txt'
+		if student_database.sizeof()>0: # if there's more than one entry ...
+			file2 = open(path, 'w', encoding='utf-8-sig')
+			str1='#Listing showing sample student details \n'
+			str2='#name, lastname, address, dob, gender\n'
+			file2.write(str1)
+			file2.write(str2)
+			for i in range(0,student_database.sizeof()): # ... use the returndetails() function to print them
+				details=student_database.get()[i].savedetails()
+				str3=str(details[0].replace(' ','')+', '+details[1].replace(' ','')+', '+details[2]+', '+details[3].replace(' ','')+', '+details[4].replace(' ','')+'\n')
+				file2.write(str3)
+			file2.close()
+		else:
+			file2.close()
+			return print('\n No student data available.') # ... otherwise return this
+	elif user_selection==8:
+		quit()
 
 def main():
 	student_database=database()
+	reader(student_database)
 	while True:
 		optionsmenu(student_database)
 
