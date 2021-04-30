@@ -1,3 +1,5 @@
+# Code to build a fractal tree.
+
 import pygame
 import math
 import random
