@@ -1,3 +1,5 @@
+# Code to simulate the movement of a flock of birds.
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pygame
