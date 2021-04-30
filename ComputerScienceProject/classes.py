@@ -1,4 +1,4 @@
-'''Comp Sci project to make a student database using classes capable of reading in data, saving data output, adding/removing students, producing reports on course and searching students. '''
+# Computer science project to make a database of students.
 
 import datetime
 
