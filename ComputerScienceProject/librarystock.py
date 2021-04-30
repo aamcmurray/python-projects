@@ -1,3 +1,5 @@
+# Computer science project to make a library database.
+
 #import necessary libraries
 import matplotlib.pyplot as plt
 import numpy as np
