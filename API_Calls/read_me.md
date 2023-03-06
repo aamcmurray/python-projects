@@ -1,9 +1,7 @@
-# Using the NISRA API
+A. Py. I v1
 
-Scripts here are used to pull data from the new NISRA data portal (https://data.nisra.gov.uk/) using Python. 
+NISRA_Beta.py is a Python script that retrieves a list of data sets available at https://data.nisra.gov.uk/
 
-Can pull a list of updated tables since a given date and retrieve either .json or .csv format data which is converted to a pandas dataframe for further analysis. 
+It can be run as an executable from command line and accepts user input. Select a dataset by index to download the dataset as a .csv to the current location. A preview of the data set will also be shown.
 
-User input currently does not have validation layers may also make a GUI.
-
-An example of how the scripts work is included via a Jupyter Notebook file. The script itself is included in a .py file. 
+NISA_API_2.ipynb shows some of the functions used in NISRA_Beta.py being applied in a Jupyter Notebook.
