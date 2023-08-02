@@ -21,6 +21,32 @@ def input_query(query,maximum_tokens,key):
     )
     return completion
 
+def role_play(query,maximum_tokens,key):
+  ''' Function that role plays and responds in the style of a pirate'''
+    openai.api_key = key
+    completion = openai.ChatCompletion.create(
+      model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": query},
+            {"role": "system","content": "You are an assistant that speaks like a pirate."}
+        ],
+        max_tokens=maximum_tokens
+    )
+    return completion
+
+def sentiment(query,maximum_tokens,key):
+  ''' Function that assesses the sentiment of input query, potentially useful for survey comment responses.'''
+    openai.api_key = key
+    completion = openai.ChatCompletion.create(
+      model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": query},
+            {"role": "system","content": "You will be provided with a comment from a staff survey, and your task is to classify its sentiment as positive, neutral, or negative. Do not answer in complete sentences. Only provide your assessment."}
+        ],
+        max_tokens=maximum_tokens
+    )
+    return completion
+
 def token_calculator(number_tokens):
   '''Back of the envelope token conversion (assuming 1 token is approx. 4 characters).'''
     approx_words = number_tokens*75/100
@@ -50,6 +76,9 @@ def main():
   result=input_query('How far from the Earth is the Sun?', 100, OPENAI_API_KEY)
   get_message(result)
   get_token_data(result)
+  input_query('Can you summarise linear regression?',500,OPENAI_API_KEY)
+  role_play('Can you summarise linear regression?',500,OPENAI_API_KEY)
+  sentiment('I dont enjoy being micromanaged, my work is ok but I do not feel respected',500,OPENAI_API_KEY)
 
 if __name__ == "__main__":
   main()
